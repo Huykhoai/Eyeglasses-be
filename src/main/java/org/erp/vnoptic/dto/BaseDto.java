@@ -10,6 +10,7 @@ import lombok.Setter;
 public class BaseDto {
     private Long id;
     private String cid;
+    private String name;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 }
