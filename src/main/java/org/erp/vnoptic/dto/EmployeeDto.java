@@ -1,12 +1,11 @@
 package org.erp.vnoptic.dto;
 
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
+@SuperBuilder
 public class EmployeeDto extends BaseDto {
     private String email;
     private String username;

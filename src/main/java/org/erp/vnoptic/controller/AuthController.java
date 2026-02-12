@@ -2,7 +2,9 @@ package org.erp.vnoptic.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
+import lombok.experimental.FieldDefaults;
 import org.erp.vnoptic.common.ApiResponse;
 import org.erp.vnoptic.requests.LoginRequest;
 import org.erp.vnoptic.requests.RefreshTokenRequest;
@@ -22,11 +24,12 @@ import java.util.Arrays;
 @RestController
 @RequestMapping("/api/auth")
 @RequiredArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 @Tag(name = "Authentication", description = "Endpoints for user login and token management")
 public class AuthController {
 
-    private final AuthService authService;
-    private final JwtTokenProvider jwtTokenProvider;
+    AuthService authService;
+    JwtTokenProvider jwtTokenProvider;
 
     @PostMapping("/login")
     @Operation(summary = "Login to get JWT token and user info")

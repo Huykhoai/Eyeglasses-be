@@ -16,15 +16,15 @@ import lombok.AccessLevel;
 @RequestMapping("/api/account")
 @RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
-public class Account {
+public class AccountController {
     
     @GetMapping("/me")
     public ApiResponse<BaseDto> getAccount(
         @AuthenticationPrincipal UserPrincipal user
     ) {
-        BaseDto baseDto = new BaseDto();
-        baseDto.setId(user.getId());
-        baseDto.setCid(user.getUsername());
+        BaseDto baseDto = BaseDto.builder()
+                .id(user.getId())
+                .name(user.getUsername()).build();
         return ApiResponse.success("Account fetched successfully", baseDto);
     }
 }
